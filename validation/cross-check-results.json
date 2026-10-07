@@ -1,0 +1,7 @@
+{
+  "date": "2026-10-07",
+  "studies": 40, "minN": 8, "maxN": 22,
+  "scipy": "1.18.1", "r": "R version 4.3.3 (2024-02-29)",
+  "python": { "studiesPassed": 40, "checks": 4262, "checksPassed": 4262 },
+  "r_": { "studiesPassed": 40, "checks": 4262, "checksPassed": 4262 }
+}

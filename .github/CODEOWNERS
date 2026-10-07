@@ -1,0 +1,6 @@
+# Changes to the locked analysis require the repository owner's review.
+# Replace @OWNER with your GitHub username after publishing.
+/src/lib/analysis/  @OWNER
+/audit/             @OWNER
+/tests/             @OWNER
+/validation/        @OWNER

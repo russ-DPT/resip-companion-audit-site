@@ -1,0 +1,13 @@
+# Reference values from R for HL CI and Holm (tests/fixtures/r.json)
+library(jsonlite)
+fx <- fromJSON("tests/fixtures/scipy.json", simplifyVector = FALSE)
+hl <- lapply(fx$continuous, function(c) {
+  x <- unlist(c$x); if (length(x) < 5) return(NULL)
+  w <- wilcox.test(x, conf.int = TRUE, exact = TRUE)
+  list(x = x, est = unname(w$estimate), lo = w$conf.int[1], hi = w$conf.int[2], p = w$p.value)
+})
+hl <- Filter(Negate(is.null), hl)
+set.seed(3)
+holm <- lapply(1:30, function(i) { p <- runif(3)^2; list(p = p, adj = p.adjust(p, "holm")) })
+write_json(list(hl = hl, holm = holm), "tests/fixtures/r.json", digits = NA, auto_unbox = TRUE)
+cat(length(hl), "HL cases\n")

@@ -1,0 +1,48 @@
+{
+  "name": "@resip/analysis",
+  "version": "1.0.0",
+  "description": "Locked, auditable statistical analysis for ReSIP studies (LKM-SNF-2026), with a public audit site",
+  "license": "MIT",
+  "type": "module",
+  "main": "src/lib/analysis/index.ts",
+  "exports": {
+    ".": "./src/lib/analysis/index.ts"
+  },
+  "files": [
+    "src/lib/analysis",
+    "audit",
+    "README.md",
+    "LICENSE"
+  ],
+  "engines": {
+    "node": ">=20"
+  },
+  "scripts": {
+    "dev": "npm run prepare-assets && next dev",
+    "prepare-assets": "node scripts/embed-audit.mjs && node scripts/sync-public.mjs",
+    "prebuild": "npm run prepare-assets",
+    "build": "next build",
+    "start": "next start",
+    "embed": "node scripts/embed-audit.mjs",
+    "test": "npm run embed && tsx --test tests/*.test.ts",
+    "typecheck": "tsc --noEmit",
+    "check": "npm run typecheck && npm test && npm run build",
+    "crosscheck": "validation/cross-check.sh 40",
+    "bundle:sim": "tsx scripts/make-sim-bundle.ts",
+    "export:engine": "node scripts/export-engine.mjs"
+  },
+  "dependencies": {
+    "fflate": "^0.8.2",
+    "next": "^16.4.0",
+    "react": "^19.3.0",
+    "react-dom": "^19.3.0"
+  },
+  "devDependencies": {
+    "@types/node": "^22.0.0",
+    "@types/react": "^19.3.0",
+    "@types/react-dom": "^19.3.0",
+    "tsx": "^4.20.0",
+    "typescript": "^5.6.0"
+  },
+  "private": true
+}
