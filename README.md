@@ -61,7 +61,9 @@ See `audit/README.md` (shipped inside every bundle) and `docs/AUDIT.md`.
 - `npm run crosscheck`: builds 40 simulated studies and reproduces each one
   in Python and R. Results are written to `validation/cross-check-results.json`
   and shown on the audit site.
-- CI (`.github/workflows/ci.yml`) runs all of the above on every push.
+- CI runs all of the above on every push. The workflow is kept at `docs/ci/ci.yml`
+  because v0 cannot push workflow files; copy it to `.github/workflows/ci.yml`
+  on GitHub (Add file, Create new file) to switch it on.
 
 ## Commands
 
